@@ -1,0 +1,13 @@
+services:
+  db:
+    container_name: antares-test-mysql
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: antares-test
+      MYSQL_USER: antares
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/:z
