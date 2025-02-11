@@ -1,0 +1,10 @@
+{
+  "name": "test-databases",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "docker:mysql":"docker compose --project-directory ./docker/mysql up"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,6 +1,7 @@
+name: antares-mysql
 services:
   db:
-    container_name: antares-test-mysql
+    container_name: mysql-8-antares
     image: mysql:8.0
     ports:
       - "3306:3306"
@@ -10,4 +11,23 @@ services:
       MYSQL_USER: antares
       MYSQL_PASSWORD: password
     volumes:
-      - ./init:/docker-entrypoint-initdb.d/:z
+      - ./init-sql:/docker-entrypoint-initdb.d/:z
+
+  ssh-tunnel:
+    container_name: ssh-tunnel-antares
+    image: linuxserver/openssh-server:latest
+    environment:
+      - TZ=Europe/Rome
+      - SUDO_ACCESS=false
+      - PASSWORD_ACCESS=true
+      - USER_NAME=tunnel
+      - USER_PASSWORD=password
+      - LOG_STDOUT=true
+    ports:
+      - "2222:2222"
+    volumes:
+      - ./ssh-config:/config/sshd:rw
+
+networks:
+  default:
+    driver: bridge
