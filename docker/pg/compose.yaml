@@ -1,0 +1,42 @@
+name: antares-pg
+services:
+  db:
+    image: postgres:latest
+    container_name: pg-antares
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-sql:/docker-entrypoint-initdb.d/:z
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-antares
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+
+  ssh-tunnel:
+    container_name: ssh-tunnel-pg-antares
+    image: linuxserver/openssh-server:latest
+    environment:
+      - TZ=Europe/Rome
+      - SUDO_ACCESS=false
+      - PASSWORD_ACCESS=true
+      - USER_NAME=tunnel
+      - USER_PASSWORD=password
+      - LOG_STDOUT=true
+    ports:
+      - "2223:2222"
+    volumes:
+      - ./ssh-config:/config/sshd:rw
+
+networks:
+  default:
+    driver: bridge

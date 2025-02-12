@@ -37,6 +37,41 @@ password: password
 
 ## PostgreSQL
 
+Run `docker compose up` in `/docker/pg` or `npm run docker:pg` from project root.
+
+### Direct Connection
+
+#### Database
+
+```yaml
+hort: localhost
+port: 5432
+user: postgres
+password: password
+```
+
+### SSH Tunnel Connection
+
+#### Database
+
+```yaml
+hort: pg-antares
+port: 5432
+user: postgres
+password: password
+```
+
+#### SSH Tunnel
+
+```yaml
+hort: localhost
+port: 2223
+user: tunnel
+password: password
+```
+
 ## SQLite
+
+In `sqlite` folder there are some databases available to connect to.
 
 ## Firebird SQL

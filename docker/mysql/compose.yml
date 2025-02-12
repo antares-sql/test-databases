@@ -14,7 +14,7 @@ services:
       - ./init-sql:/docker-entrypoint-initdb.d/:z
 
   ssh-tunnel:
-    container_name: ssh-tunnel-antares
+    container_name: ssh-tunnel-mysql-antares
     image: linuxserver/openssh-server:latest
     environment:
       - TZ=Europe/Rome
