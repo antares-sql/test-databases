@@ -9,7 +9,7 @@ Run `docker compose up` in `/docker/mysql` or `npm run docker:mysql` from projec
 #### Database
 
 ```yaml
-hort: localhost
+host: localhost
 port: 3306
 user: root
 password: password
@@ -20,7 +20,7 @@ password: password
 #### Database
 
 ```yaml
-hort: mysql-8-antares
+host: mysql-8-antares
 port: 3306
 user: root
 password: password
@@ -29,7 +29,7 @@ password: password
 #### SSH Tunnel
 
 ```yaml
-hort: localhost
+host: localhost
 port: 2222
 user: tunnel
 password: password
@@ -44,7 +44,7 @@ Run `docker compose up` in `/docker/pg` or `npm run docker:pg` from project root
 #### Database
 
 ```yaml
-hort: localhost
+host: localhost
 port: 5432
 user: postgres
 password: password
@@ -55,7 +55,7 @@ password: password
 #### Database
 
 ```yaml
-hort: pg-antares
+host: pg-antares
 port: 5432
 user: postgres
 password: password
@@ -64,7 +64,7 @@ password: password
 #### SSH Tunnel
 
 ```yaml
-hort: localhost
+host: localhost
 port: 2223
 user: tunnel
 password: password
